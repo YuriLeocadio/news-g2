@@ -10,3 +10,8 @@ header{
     background-color: #232a31;
     padding: 10px 32px;
 }
+footer{
+    background-color: red;
+    width: 100%;
+    height: 300px;
+}
