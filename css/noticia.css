@@ -1,3 +1,141 @@
-body{
+body {
     color: #E5E5E5;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'IBM Plex Serif', serif;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+    color: #333;
+}
+
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+
+}
+
+main {
+    flex: 3;
+    padding-right: 20px;
+}
+
+
+.headline {
+    background-color: #0E1E32;
+    padding: 40px 20px;
+    border-radius: 15px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.headline h1 {
+    font-size: 2rem;
+    margin-bottom: 0;
+    color: rgb(245, 245, 245)
+}
+
+.image-container img {
+    width: 100%;
+    max-width: 1080px;
+    height: 423px;
+    border: 5px solid #f4f4f4;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.article-details {
+    background-color: #fff;
+    padding: 30px;
+    margin: 30px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.article-header {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.article-content p {
+    margin-bottom: 15px;
+}
+
+.interaction-icons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.article-summary hr {
+    border: none;
+    border-top: 2px solid #9b0d0d;
+    margin-bottom: 15px;
+}
+
+.article-summary p {
+    color: #cc0000;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+
+.sidebar {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.recommended {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recommended h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.recommended-item {
+    margin-bottom: 20px;
+}
+
+.recommended-item img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.recommended-item p {
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.4;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    main {
+        padding-right: 0;
+    }
+
+    .headline h1 {
+        font-size: 1.5rem;
+    }
 }
