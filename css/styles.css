@@ -1,5 +1,5 @@
 body{
-    color: #E5E5E5;
+    background-color: #E5E5E5;
 }
 .main {
     height: 100%;
@@ -47,6 +47,7 @@ body{
    justify-content: center;
   
 }
+
 .container{
     display: flex;
     justify-content: center;
@@ -114,4 +115,129 @@ body{
     flex-direction: row;
     gap: 30px;
     color: black;
+}
+.main{
+    height: 100%;
+    width: 100%;
+    max-width: 1366px;
+}
+
+.news-section{
+    width: 100%;
+}
+
+.news-nav{
+    width: 100%;
+    height: 54px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #ffffffd5;
+}
+
+.nav-items{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.news-section-links{
+    padding: 0 56px;
+    font-size: 18px;
+    color: #2A2A2A;
+}
+
+.fa-newspaper{
+    font-size: 30px;
+    margin-right: 30px;
+    color: #000000;
+}
+
+.cards{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 12px;
+    justify-items: center;
+    align-items: center;
+}
+
+.notice-card{
+    width: 438px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    background-color: #FFF;
+    gap: 18px;
+}
+
+.header-card{
+    width: 100%;
+    height: 250px;
+}
+
+.notice-img{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    object-fit: cover;
+}
+
+.main-card{
+    width: 100%;
+    max-width: 388px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.notice-title{
+    font-size: 18px;
+    font-family: Poppins-SemiBold;
+    color: #2A2A2A;
+}
+
+.notice-description{
+    font-size: 15;
+    font-family: Poppins-Regular;
+    color: #2A2A2A;
+}
+
+.notice-details{
+    display: flex;
+    gap: 30px;
+}
+
+.notice-details span{
+    font-size: 13px;
+    font-family: Poppins-Regular;
+}
+
+.notice-hour{
+    color: #000000;
+}
+
+.notice-author{
+    color: #807c7c;
+}
+
+.footer-card{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    gap: 18px;
+    border-top: 1px solid #e7e4e4;
+}
+
+.footer-card i{
+    font-size: 20px;
+    color: #000000;
 }
