@@ -1,6 +1,52 @@
 body{
     background-color: #E5E5E5;
 }
+.main {
+    height: 100%;
+    width: 100%;
+    max-width: 1366px;
+    
+  
+}   
+.trending{
+    display: flex;
+    justify-content: center;
+   margin-top: 20px;
+  
+
+}
+.img-trending{
+    width: 750px;
+    height: 500px;
+    
+   
+}
+.trending-text{
+   gap: 20px;
+    width: 540px;
+    height: 320px;
+  padding: 20px;
+    justify-content: center;
+        display: flex;
+        flex-direction: column;
+        margin-left: 76px;
+        margin-top: 122px;
+
+
+
+      
+}
+.trending-text p{
+   margin-top: 10px;
+
+}
+.trending-part{
+
+    display: flex;
+    flex-direction: row;
+   justify-content: center;
+  
+}
 
 .container{
     display: flex;
@@ -9,6 +55,67 @@ body{
     flex-direction: column;
 }
 
+.white-box{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+.white-box h1{
+    color: red;
+    font-size: 15px;
+}
+
+.red-box{
+    background-color: #C31815;
+    width: 1366px;
+    height: 80px;
+    margin-top: 30px;
+
+}
+.red-box{
+    display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+}
+.red-text p{
+    font-size: 15px;
+    color: #fff;
+   
+}
+.fav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   
+}
+
+.fav span{
+    color: red;
+}
+.fav-item{
+    display: flex;
+    gap: 20px;
+ 
+}
+
+.fa-heart{
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+.fas{
+    color: red;
+}
+.fa-bookmark{
+    color: black;
+}
+
+.trending-foot{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    color: black;
+}
 .main{
     height: 100%;
     width: 100%;
