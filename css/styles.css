@@ -65,7 +65,7 @@ body{
 }
 
 .red-box{
-    background-color: red;
+    background-color: #C31815;
     width: 1366px;
     height: 80px;
     margin-top: 30px;
@@ -81,4 +81,37 @@ body{
     font-size: 15px;
     color: #fff;
    
+}
+.fav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   
+}
+
+.fav span{
+    color: red;
+}
+.fav-item{
+    display: flex;
+    gap: 20px;
+ 
+}
+
+.fa-heart{
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+.fas{
+    color: red;
+}
+.fa-bookmark{
+    color: black;
+}
+
+.trending-foot{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    color: black;
 }
