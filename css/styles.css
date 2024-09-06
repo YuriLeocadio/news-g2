@@ -282,6 +282,7 @@ i, img{
 .a-header:hover {
     color: rgb(184, 11, 28);
     transition: 0.3s all;
+    background-color: #7d7b7b;
 }
 
 .fa-user {
