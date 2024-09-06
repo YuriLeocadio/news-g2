@@ -1,17 +1,23 @@
 const API_KEY = 'de24841025994b858d5cb939a61393a3';
 const DB_KEY = '@news.g2'
+let topics = 'keyword'
+let urlApi = `https://newsapi.org/v2/everything?q=${topics}&apiKey=${API_KEY}&pageSize=6&language=pt&country=br`
 
 document.addEventListener('DOMContentLoaded', () => {
-    axios.get(`https://newsapi.org/v2/everything?q=keyword&apiKey=${API_KEY}&pageSize=6&languege=pt`)
-        .then(response => {
-            console.log(response.data.articles)
-            const jornal = response.data.articles
-            saveRepositoryInfo(jornal)
-
-        }
-        )
-        .catch(err => console.log(err))
+    createTopic(topics)
 });
+
+function createTopic(topic) {
+    topics = topic
+    urlApi = `https://newsapi.org/v2/everything?q=${topics}&apiKey=${API_KEY}&pageSize=6&language=pt`
+
+    axios.get(urlApi).then(response => {
+        console.log(response.data.articles)
+        const jornal = response.data.articles
+        saveRepositoryInfo(jornal)
+    })
+        .catch(err => console.log(err))
+}
 
 function saveRepositoryInfo(articles) {
     localStorage.setItem(DB_KEY, JSON.stringify(articles));
@@ -95,5 +101,6 @@ function saveRepositoryInfo(articles) {
 
     });
 }
+
 
 saveRepositoryInfo();

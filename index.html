@@ -16,11 +16,13 @@
         <header class="header">
             <nav>
                 <ul id="ul-header">
-                    <li><img class="logo" src="./assets/img/logo.png" alt="logo News G2" /></li>
+                    <li>
+                        <img class="logo" src="./assets/img/logo.png" alt="logo News G2" />
+                    </li>
                     <li class="li-header">
-                        <a class="a-header" href="#">Política</a>
-                        <a class="a-header" href="#">Esportes</a>
-                        <a class="a-header" href="#">Tecnologia</a>
+                        <a class="a-header" href="#" onclick="createTopic('sports')">Esportes</a>
+                        <a class="a-header" href="#" onclick="createTopic('politics')">Política</a>
+                        <a class="a-header" href="#" onclick="createTopic('technology')">Tecnologia</a>
                         <a class="a-header" href="#">Favoritos</a>
                     </li>
 
@@ -79,10 +81,10 @@
                 <nav class="news-nav">
                     <ul class="nav-items">
                         <li>
-                            <a href="#" class="news-section-links">Sports</a>
-                            <a href="#" class="news-section-links">Politics</a>
-                            <a href="#" class="news-section-links">Technology</a>
-                            <a href="#" class="news-section-links">Favorites</a>
+                            <a href="#" class="news-section-links" onclick="createTopic('sports')">Esportes</a>
+                            <a href="#" class="news-section-links" onclick="createTopic('politics')">Política</a>
+                            <a href="#" class="news-section-links" onclick="createTopic('technology')">Tecnologia</a>
+                            <a href="#" class="news-section-links">Favoritos</a>
                         </li>
                         <li>
                             <i class="far fa-newspaper"></i>
