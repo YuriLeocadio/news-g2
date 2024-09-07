@@ -61,8 +61,13 @@ i, img{
     margin-top: 122px;
 }
 
-.trending-text p {
+.trending-title{
+    font-family:Poppins-Bold ;
+    font-size: 20px;
+}
+.trending-description {
     margin-top: 10px;
+    font-family:Poppins-Regular ;
 }
 
 .white-box {
@@ -75,6 +80,7 @@ i, img{
 .white-box h1 {
     color: red;
     font-size: 15px;
+    font-family:Poppins-SemiBold ;
 }
 
 .red-box {
@@ -93,7 +99,8 @@ i, img{
 
 .red-text p {
     font-size: 15px;
-    color: #fff;
+    color: #ffffff;
+    font-family:Poppins-Regular ;
 }
 
 .fav {
@@ -102,7 +109,7 @@ i, img{
     justify-content: space-between;
 }
 
-.fav span {
+.fav-span {
     color: red;
 }
 
@@ -157,7 +164,13 @@ i, img{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }
+
+.nav-items a{
+    font-family:Poppins-SemiBold ;
+}
+
 
 .news-section-links {
     padding: 0 56px;
@@ -219,12 +232,14 @@ i, img{
     font-size: 20px;
     font-family: Poppins-SemiBold;
     color: #2A2A2A;
+    height: 120px;
 }
 
 .notice-description {
     font-size: 15;
-    font-family: Poppins-Regular;
+    font-family: Poppins-Light;
     color: #2A2A2A;
+    height: 75px;
 }
 
 .notice-details {
@@ -237,12 +252,19 @@ i, img{
     font-family: Poppins-Regular;
 }
 
-.notice-hour {
+.notice-date {
     color: #000000;
 }
 
 .notice-author {
     color: #807c7c;
+}
+
+.show-more{
+    font-size: 14px;
+    font-family: Poppins-Medium;
+    color: rgb(0, 183, 255);
+    cursor: pointer;
 }
 
 .footer-card {

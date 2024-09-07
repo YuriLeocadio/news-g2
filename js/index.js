@@ -1,25 +1,39 @@
-const API_KEY = 'de24841025994b858d5cb939a61393a3';
+const API_KEY = '11f27ecf034d4f5797e83e6ab372b94b';
 const DB_KEY = '@news.g2'
-let topics = 'keyword'
-let urlApi = `https://newsapi.org/v2/everything?q=${topics}&apiKey=${API_KEY}&pageSize=6&language=pt&country=br`
+const baseUrl = `https://newsapi.org/v2/everything?apiKey=${API_KEY}&pageSize=6&language=pt`
 
-document.addEventListener('DOMContentLoaded', () => {
-    createTopic(topics)
+document.addEventListener('DOMContentLoaded', (event) => {
+    createTopic(event, undefined);
+    createTreding();
 });
 
-function createTopic(topic) {
-    topics = topic
-    urlApi = `https://newsapi.org/v2/everything?q=${topics}&apiKey=${API_KEY}&pageSize=6&language=pt`
+function createTopic(event, searchTopic) {
+    event.preventDefault();
 
-    axios.get(urlApi).then(response => {
+    const sortByDefault = 'publishedAt'
+    const defaultTopic = 'business'
+    const topic = searchTopic || defaultTopic
+
+    axios.get(`${baseUrl}&q=${topic}&sortBy=${sortByDefault}`).then(response => {
         console.log(response.data.articles)
-        const jornal = response.data.articles
-        saveRepositoryInfo(jornal)
+        const artigos = response.data.articles
+        createCardsNotice(artigos)
     })
         .catch(err => console.log(err))
 }
 
-function saveRepositoryInfo(articles) {
+function createTreding() {
+    const defaultTopicTrending = 'general'
+
+    axios.get(`${baseUrl}&q=${defaultTopicTrending}&sortBy=popularity`).then(response => {
+        console.log(response.data.articles)
+        const artigoTrending = response.data.articles
+        createTredingNotice(artigoTrending)
+    })
+        .catch(err => console.log(err))
+}
+
+function createCardsNotice(articles) {
     localStorage.setItem(DB_KEY, JSON.stringify(articles));
 
     const ul = document.querySelector('.cards');
@@ -53,8 +67,8 @@ function saveRepositoryInfo(articles) {
         const divNoticeDetails = document.createElement('div')
         divNoticeDetails.className = 'notice-details'
 
-        const spanHour = document.createElement('span')
-        spanHour.className = 'notice-hour'
+        const spanDate = document.createElement('span')
+        spanDate.className = 'notice-date'
 
         const date = new Date(article.publishedAt);
         const formattedDate = date.toLocaleDateString('pt-BR', {
@@ -63,11 +77,15 @@ function saveRepositoryInfo(articles) {
             day: 'numeric'
         });
 
-        spanHour.textContent = formattedDate
+        spanDate.textContent = formattedDate
 
         const spanAuthor = document.createElement('span')
         spanAuthor.className = 'notice-author'
         spanAuthor.textContent = article.author || 'Sem autor'
+
+        const showMore = document.createElement('a')
+        showMore.className = 'show-more'
+        showMore.textContent = 'Ver mais...'
 
         const footerCard = document.createElement('footer')
         footerCard.className = 'footer-card'
@@ -79,8 +97,9 @@ function saveRepositoryInfo(articles) {
         iconBookmark.className = 'far fa-bookmark'
 
 
-        divNoticeDetails.appendChild(spanHour)
+        divNoticeDetails.appendChild(spanDate)
         divNoticeDetails.appendChild(spanAuthor)
+        divNoticeDetails.appendChild(showMore)
 
         footerCard.appendChild(iconHeart)
         footerCard.appendChild(iconBookmark)
@@ -102,5 +121,88 @@ function saveRepositoryInfo(articles) {
     });
 }
 
+function createTredingNotice(articles) {
+    localStorage.setItem(DB_KEY, JSON.stringify(articles));
 
-saveRepositoryInfo();
+    const section = document.querySelector('.trending')
+    section.innerHTML = ''
+
+    const articleTrending = articles[1]
+
+
+        const img = document.createElement('img')
+        img.className = 'img-trending'
+        img.src = articleTrending.urlToImage
+        img.alt = 'capa do artigo trending'
+
+        const divTrendingText = document.createElement('div')
+        divTrendingText.className = 'trending-text'
+
+        const headerTrending = document.createElement('header')
+        headerTrending.className = 'fav'
+
+        const spanTrending = document.createElement('span')
+        spanTrending.className = 'fav-span'
+        spanTrending.textContent = 'tendência'
+
+        const divTrendingIcon = document.createElement('div')
+        divTrendingIcon.className = 'fav-item'
+
+        const iconHeartTrending = document.createElement('i')
+        iconHeartTrending.className = 'far fa-heart'
+
+        const iconBookmarkTrending = document.createElement('i')
+        iconBookmarkTrending.className = 'far fa-bookmark'
+
+        const trendingTitle = document.createElement('h1')
+        trendingTitle.className = 'treding-title'
+        trendingTitle.textContent = articleTrending.title
+        
+        const trendingDescription = document.createElement('p')
+        trendingDescription.className = 'trending-description'
+        trendingDescription.textContent = articleTrending.description.substring(0,150) + '...' || 'Sem descrição'
+
+        const trendingFooter = document.createElement('footer')
+        trendingFooter.className = 'trending-foot'
+
+        const trendingDate = document.createElement('span')
+        trendingDate.className = 'trending-date'
+        
+        const dateTrending = new Date(articleTrending.publishedAt);
+        const formattedDateTrending = dateTrending.toLocaleDateString('pt-BR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        trendingDate.textContent = formattedDateTrending
+
+        const trendingAuthor = document.createElement('span')
+        trendingAuthor.className = 'trending-author'
+        trendingAuthor.textContent = articleTrending.author || 'Sem autor'
+
+        const trendingShowMore = document.createElement('a')
+        trendingShowMore.className = 'show-more'
+        trendingShowMore.textContent = 'Ver mais...'
+
+        trendingFooter.appendChild(trendingDate)
+        trendingFooter.appendChild(trendingAuthor)
+        trendingFooter.appendChild(trendingShowMore)
+
+        divTrendingIcon.appendChild(iconHeartTrending)
+        divTrendingIcon.appendChild(iconBookmarkTrending)
+
+        headerTrending.appendChild(spanTrending)
+        headerTrending.appendChild(divTrendingIcon)
+
+        divTrendingText.appendChild(headerTrending)
+        divTrendingText.appendChild(trendingTitle)
+        divTrendingText.appendChild(trendingDescription)
+        divTrendingText.appendChild(trendingFooter)
+
+        section.appendChild(img)
+        section.appendChild(divTrendingText)
+    }
+
+createTredingNotice();
+createCardsNotice();

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="./css/reponsivoIndex.css">
     <link rel="stylesheet" href="./css/styles.css">
     <script src="https://kit.fontawesome.com/a290182793.js"></script>
     <title>News G2</title>
@@ -20,9 +21,9 @@
                         <img class="logo" src="./assets/img/logo.png" alt="logo News G2" />
                     </li>
                     <li class="li-header">
-                        <a class="a-header" href="#" onclick="createTopic('sports')">Esportes</a>
-                        <a class="a-header" href="#" onclick="createTopic('politics')">Política</a>
-                        <a class="a-header" href="#" onclick="createTopic('technology')">Tecnologia</a>
+                        <a class="a-header" href="#topics" onclick="createTopic(event, 'sports')">Esportes</a>
+                        <a class="a-header" href="#topics" onclick="createTopic(event, 'politics')">Política</a>
+                        <a class="a-header" href="#topics" onclick="createTopic(event, 'technology')">Tecnologia</a>
                         <a class="a-header" href="#">Favoritos</a>
                     </li>
 
@@ -39,32 +40,33 @@
         <main class="main">
             <section class="trending">
 
-                    <img class="img-trending" src="" alt="">
-                    <div class="trending-text">
+                <img class="img-trending" src="" alt="">
+                <div class="trending-text">
 
-                        <header class="fav">
-                            <span>Trending</span>
-                            <div class="fav-item">
-                                <i class="far fa-heart"></i>
-                                <i class="far fa-bookmark"></i>
-                            </div>
-                        </header>
+                    <header class="fav">
+                        <span class="fav-span">Trending</span>
+                        <div class="fav-item">
+                            <i class="far fa-heart"></i>
+                            <i class="far fa-bookmark"></i>
+                        </div>
+                    </header>
 
-                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat neque animi rerum
-                            laborum
-                            laboriosam perspiciatis tenetur eos temporibus quas aperiam. Adipisci at quae, unde
-                            itaque
-                            nam sit fuga inventore illo!</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus minus praesentium
-                            autem eius porro veniam quas magni quidem. Obcaecati fuga ad perspiciatis sapiente
-                            alias.
-                            Omnis possimus officia maxime illum assumenda?</p>
+                    <h1 class="trending-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat neque animi rerum
+                        laborum
+                        laboriosam perspiciatis tenetur eos temporibus quas aperiam. Adipisci at quae, unde
+                        itaque
+                        nam sit fuga inventore illo!</h1>
+                    <p class="trending-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus minus praesentium
+                        autem eius porro veniam quas magni quidem. Obcaecati fuga ad perspiciatis sapiente
+                        alias.
+                        Omnis possimus officia maxime illum assumenda?</p>
 
-                        <footer class="trending-foot">
-                            <span> 2 hours ago</span>
-                            <span> By luqueta </span>
-                        </footer>
-                    </div>
+                    <footer class="trending-foot">
+                        <span class="trending-date"> 2 hours ago</span>
+                        <span class="trending-author"> By luqueta </span>
+                        <a href="#" class="show-more">Ver mais...</a>
+                    </footer>
+                </div>
             </section>
 
             <div class="red-box">
@@ -81,9 +83,10 @@
                 <nav class="news-nav">
                     <ul class="nav-items">
                         <li>
-                            <a href="#" class="news-section-links" onclick="createTopic('sports')">Esportes</a>
-                            <a href="#" class="news-section-links" onclick="createTopic('politics')">Política</a>
-                            <a href="#" class="news-section-links" onclick="createTopic('technology')">Tecnologia</a>
+                            <a href="#" class="news-section-links" onclick="createTopic(event, 'sports')">Esportes</a>
+                            <a href="#" class="news-section-links" onclick="createTopic(event, 'politics')">Política</a>
+                            <a href="#" class="news-section-links"
+                                onclick="createTopic(event, 'technology')">Tecnologia</a>
                             <a href="#" class="news-section-links">Favoritos</a>
                         </li>
                         <li>
@@ -103,7 +106,7 @@
                                     Ex repudiandae delectus magnam harum cum numquam maxime itaque maiores? Beatae nobis
                                     non facere sapiente nam repellat ratione eligendi inventore quos quae?</p>
                                 <div class="notice-details">
-                                    <span class="notice-hour">2 hours ago</span>
+                                    <span class="notice-date">2 hours ago</span>
                                     <span class="notice-author">Yuri Leocadio</span>
                                 </div>
                             </div>
@@ -125,7 +128,30 @@
                                     Ex repudiandae delectus magnam harum cum numquam maxime itaque maiores? Beatae nobis
                                     non facere sapiente nam repellat ratione eligendi inventore quos quae?</p>
                                 <div class="notice-details">
-                                    <span class="notice-hour">2 hours ago</span>
+                                    <span class="notice-date">2 hours ago</span>
+                                    <span class="notice-author">Yuri Leocadio</span>
+                                    <a href="" class="show-more">Ver mais...</a>
+                                </div>
+                            </div>
+                            <footer class="footer-card">
+                                <i class="far fa-heart"></i>
+                                <i class="far fa-bookmark"></i>
+                            </footer>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="notice-card">
+                            <header class="header-card">
+                                <img src="./assets/img/logo.png" alt="capa da notícia" class="notice-img">
+                            </header>
+                            <div class="main-card">
+                                <h3 class="notice-title">shdkajgfasdglkasadad</h3>
+                                <p class="notice-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                    Ex repudiandae delectus magnam harum cum numquam maxime itaque maiores? Beatae nobis
+                                    non facere sapiente nam repellat ratione eligendi inventore quos quae?</p>
+                                <div class="notice-details">
+                                    <span class="notice-date">2 hours ago</span>
                                     <span class="notice-author">Yuri Leocadio</span>
                                 </div>
                             </div>
@@ -147,7 +173,7 @@
                                     Ex repudiandae delectus magnam harum cum numquam maxime itaque maiores? Beatae nobis
                                     non facere sapiente nam repellat ratione eligendi inventore quos quae?</p>
                                 <div class="notice-details">
-                                    <span class="notice-hour">2 hours ago</span>
+                                    <span class="notice-date">2 hours ago</span>
                                     <span class="notice-author">Yuri Leocadio</span>
                                 </div>
                             </div>
@@ -169,7 +195,7 @@
                                     Ex repudiandae delectus magnam harum cum numquam maxime itaque maiores? Beatae nobis
                                     non facere sapiente nam repellat ratione eligendi inventore quos quae?</p>
                                 <div class="notice-details">
-                                    <span class="notice-hour">2 hours ago</span>
+                                    <span class="notice-date">2 hours ago</span>
                                     <span class="notice-author">Yuri Leocadio</span>
                                 </div>
                             </div>
@@ -191,29 +217,7 @@
                                     Ex repudiandae delectus magnam harum cum numquam maxime itaque maiores? Beatae nobis
                                     non facere sapiente nam repellat ratione eligendi inventore quos quae?</p>
                                 <div class="notice-details">
-                                    <span class="notice-hour">2 hours ago</span>
-                                    <span class="notice-author">Yuri Leocadio</span>
-                                </div>
-                            </div>
-                            <footer class="footer-card">
-                                <i class="far fa-heart"></i>
-                                <i class="far fa-bookmark"></i>
-                            </footer>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="notice-card">
-                            <header class="header-card">
-                                <img src="./assets/img/logo.png" alt="capa da notícia" class="notice-img">
-                            </header>
-                            <div class="main-card">
-                                <h3 class="notice-title">shdkajgfasdglkasadad</h3>
-                                <p class="notice-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                    Ex repudiandae delectus magnam harum cum numquam maxime itaque maiores? Beatae nobis
-                                    non facere sapiente nam repellat ratione eligendi inventore quos quae?</p>
-                                <div class="notice-details">
-                                    <span class="notice-hour">2 hours ago</span>
+                                    <span class="notice-date">2 hours ago</span>
                                     <span class="notice-author">Yuri Leocadio</span>
                                 </div>
                             </div>
@@ -252,7 +256,8 @@
                             Termos e Condições - Política de Privacidade &copy;2024 Todos os direitos reservados por
                             <span>News G2 2024.</span>
                             Design do site por
-                            <span>Yuri Leocadio, Lucas Carvalho, Isaac Marinho, Maria Eduarda Vasconcelos e Wagner Gomes.</span>
+                            <span>Yuri Leocadio, Lucas Carvalho, Isaac Marinho, Maria Eduarda Vasconcelos e Wagner
+                                Gomes.</span>
                         </p>
                     </div>
                 </li>
