@@ -23,7 +23,7 @@ body {
 
 .logo {
     width: 100px;
-    
+
 }
 
 .logo {
@@ -131,15 +131,16 @@ body {
     color: rgb(168, 170, 171);
 
 }
+
 .container {
-   
+
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-   
-    
+
+
 
 }
 
@@ -147,7 +148,7 @@ main {
 
     padding-right: 20px;
     max-width: 1200px;
-   
+
 }
 
 
@@ -166,7 +167,7 @@ main {
     font-size: 2rem;
     margin-bottom: 0;
     color: rgb(245, 245, 245);
-    font-family:Poppins-SemiBold ;
+    font-family: Poppins-SemiBold;
 }
 
 .primeira-imagem {
@@ -221,11 +222,11 @@ main {
     color: #cc0000;
     font-weight: bold;
     line-height: 1.4;
-   
+
 }
 
-.article-summary strong{
-    font-family:Poppins-SemiBold;
+.article-summary strong {
+    font-family: Poppins-SemiBold;
 }
 
 .sidebar {
@@ -284,8 +285,9 @@ main {
     font-size: 135%;
 
 }
-.texto{
-    font-family:Poppins-Light ;
+
+.texto {
+    font-family: Poppins-Light;
 }
 
 .comentario {
@@ -428,12 +430,12 @@ main {
 /* noticias mais */
 
 .related-topics {
-    
+
     margin-top: 5%;
     width: 150%;
     height: 150%;
     margin-left: -24%;
-    
+
 }
 
 .related-topics h3 {
@@ -448,8 +450,8 @@ main {
     justify-content: space-between;
     gap: 20px;
     width: 100%;
-  
-   }
+
+}
 
 .card {
     background-color: white;
@@ -464,6 +466,7 @@ main {
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    transition: 0.7s;
 }
 
 .card:hover {
@@ -476,7 +479,7 @@ main {
     object-fit: cover;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    
+
 }
 
 .card h4 {
@@ -486,7 +489,7 @@ main {
     max-width: 100%;
     margin-top: 7%;
     margin: 2%;
-    font-family:Poppins-SemiBold ;
+    font-family: Poppins-SemiBold;
 
 }
 
@@ -497,7 +500,7 @@ main {
     padding: 10px;
     margin-top: 12px;
     gap: 20px;
-   
+
 }
 
 .card-actions span {
@@ -508,4 +511,3 @@ main {
 .card-actions span:hover {
     color: red;
 }
-

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const artigosRecomends = response.data.articles
         createRecomendsTopics(artigosRecomends)
     })
-    .catch(err => console.log(err))
+        .catch(err => console.log(err))
 })
 
 if (window.location.pathname.includes('noticia.html')) {
@@ -34,6 +34,7 @@ if (window.location.pathname.includes('noticia.html')) {
 
         document.querySelector('.notice-title').textContent = notice.title
         document.querySelector('.primeira-imagem').src = notice.urlToImage
+
         const dateTrending = new Date(notice.publishedAt);
         const formattedDate = dateTrending.toLocaleDateString('pt-BR', {
             year: 'numeric',
@@ -41,13 +42,14 @@ if (window.location.pathname.includes('noticia.html')) {
             day: 'numeric'
         });
         document.querySelector('.date-notice').textContent = formattedDate
+
         document.querySelector('.author').textContent = notice.author || 'Sem autor'
         document.querySelector('.notice-content').textContent = notice.description || 'Sem descrição'
         document.querySelector('.texto').textContent = notice.content
     }
 }
 
-function createRecomendsTopics(articles){
+function createRecomendsTopics(articles) {
     const divContainer = document.querySelector('.card-container')
     divContainer.innerHTML = ''
 
@@ -84,10 +86,10 @@ function createRecomendsTopics(articles){
     });
 }
 
-function shuffleArray(preShuffleArray){
+function shuffleArray(preShuffleArray) {
     const size = preShuffleArray.length;
     let currentIndex = size - 1
-    while(currentIndex > 0){
+    while (currentIndex > 0) {
         let randomIndex = Math.floor(Math.random() * size);
         let aux = preShuffleArray[currentIndex];
         preShuffleArray[currentIndex] = preShuffleArray[randomIndex];
