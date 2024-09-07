@@ -1,9 +1,6 @@
 body {
-
     background-color: #E5E5E5;
-
 }
-
 
 .header {
     width: 100%;
@@ -29,48 +26,33 @@ body {
     
 }
 
+.logo {
+    width: 150px;
+    margin-right: 40px;
+
+}
+
 #ul-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
-}
-
-.li-header {
-    display: flex;
-    gap: 155px;
 
 }
+
 
 .a-header {
     color: rgb(82, 81, 81);
     font-family: Poppins-Light;
-    border-radius: 10px;
-    border: 2px solid rgb(168, 170, 171);
     padding: 10px;
+
+
 }
 
 .a-header:hover {
-    color: rgb(184, 11, 28);
+    color: rgb(255, 15, 39);
     transition: 0.3s all;
-}
 
-.fa-user {
-    font-size: 30px;
-    color: rgb(168, 170, 171);
-    padding: 40px;
-}
-
-.fa-search {
-    font-size: 30px;
-    color: rgb(168, 170, 171);
-    padding: 40px;
-}
-
-.fa-bars {
-    font-size: 30px;
-    color: rgb(168, 170, 171);
-    padding: 40px;
 }
 
 .footer {
@@ -119,6 +101,8 @@ body {
     font-family: Poppins-light;
 }
 
+
+
 .footer-texts span {
     color: #FFF;
     font-family: Poppins-Medium;
@@ -147,7 +131,6 @@ body {
     color: rgb(168, 170, 171);
 
 }
-
 .container {
    
     width: 100%;
@@ -182,17 +165,20 @@ main {
 .headline h1 {
     font-size: 2rem;
     margin-bottom: 0;
-    color: rgb(245, 245, 245)
+    color: rgb(245, 245, 245);
+    font-family:Poppins-SemiBold ;
 }
 
-.image-container img {
+.primeira-imagem {
     width: 100%;
+    height: 550px;
     max-width: 1080px;
-    height: 423px;
     border: 5px solid #f4f4f4;
     border-radius: 10px;
     margin-top: 10px;
     margin-left: 5%;
+    object-fit: cover;
+    cursor: pointer;
 }
 
 .article-details {
@@ -204,6 +190,8 @@ main {
 }
 
 .article-header {
+    display: flex;
+    gap: 20px;
     font-size: 0.9rem;
     color: #777;
     margin-bottom: 20px;
@@ -212,7 +200,10 @@ main {
 .article-content p {
     margin-bottom: 15px;
     font-size: 135%;
+    font-family: Poppins-Light;
 }
+
+
 
 .interaction-icons {
     display: flex;
@@ -230,8 +221,12 @@ main {
     color: #cc0000;
     font-weight: bold;
     line-height: 1.4;
+   
 }
 
+.article-summary strong{
+    font-family:Poppins-SemiBold;
+}
 
 .sidebar {
     flex: 1;
@@ -272,19 +267,7 @@ main {
 
 /* parte isaac */
 
-.imagem {
 
-    margin-top: 5%;
-    margin-left: 15%;
-    width: 70%;
-
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-}
 
 .image {
     width: 100%;
@@ -300,9 +283,9 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-size: 135%;
 
-    
-
-
+}
+.texto{
+    font-family:Poppins-Light ;
 }
 
 .comentario {
@@ -322,7 +305,6 @@ main {
     font-size: small;
 
 }
-
 
 
 
@@ -455,9 +437,10 @@ main {
 }
 
 .related-topics h3 {
-    font-size: 300%;
+    font-size: 45px;
     margin-bottom: 20px;
     text-align: center;
+    font-family: Poppins-Medium;
 }
 
 .card-container {
@@ -480,6 +463,7 @@ main {
     align-items: center;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .card:hover {
@@ -496,12 +480,13 @@ main {
 }
 
 .card h4 {
-    font-size: 27px;
+    font-size: 18px;
     padding: 5px;
     color: #333;
     max-width: 100%;
     margin-top: 7%;
     margin: 2%;
+    font-family:Poppins-SemiBold ;
 
 }
 

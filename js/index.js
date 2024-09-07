@@ -1,12 +1,27 @@
-const API_KEY = '11f27ecf034d4f5797e83e6ab372b94b';
+const API_KEY = 'daed6cb259cf49098d7cb037da993b31';
 const DB_KEY = '@news.g2'
 const baseUrl = `https://newsapi.org/v2/everything?apiKey=${API_KEY}&pageSize=6&language=pt`
 
 document.addEventListener('DOMContentLoaded', (event) => {
     createTreding();
     createBreakingNews();
-    createTopic(event, undefined);
+    createTopicCard(event, undefined);
 });
+
+function createTopicTrending(event, searchTopicTrending) {
+    event.preventDefault();
+
+    const sortByDefaultTrending = 'popularity'
+    const defaultTopicTrending = 'general'
+    const topicTrending = searchTopicTrending || defaultTopicTrending
+
+    axios.get(`${baseUrl}&q=${topicTrending}&sortBy=${sortByDefaultTrending}`).then(response => {
+        console.log(response.data.articles)
+        const artigosTrending = response.data.articles
+        createTredingNotice(artigosTrending)
+    })
+        .catch(err => console.log(err))
+}
 
 function createTreding() {
     const defaultTopicTrending = 'general'
@@ -30,12 +45,12 @@ function createBreakingNews() {
         .catch(err => console.log(err))
 }
 
-function createTopic(event, searchTopic) {
+function createTopicCard(event, searchTopicCard) {
     event.preventDefault();
 
     const sortByDefault = 'publishedAt'
-    const defaultTopic = 'business'
-    const topic = searchTopic || defaultTopic
+    const defaultTopicCard = 'business'
+    const topic = searchTopicCard || defaultTopicCard
 
     axios.get(`${baseUrl}&q=${topic}&sortBy=${sortByDefault}`).then(response => {
         console.log(response.data.articles)
@@ -66,7 +81,7 @@ function createTredingNotice(articles) {
 
     const spanTrending = document.createElement('span')
     spanTrending.className = 'fav-span'
-    spanTrending.textContent = 'tendência'
+    spanTrending.textContent = 'Tendência'
 
     const divTrendingIcon = document.createElement('div')
     divTrendingIcon.className = 'fav-item'
@@ -104,13 +119,17 @@ function createTredingNotice(articles) {
     trendingAuthor.className = 'trending-author'
     trendingAuthor.textContent = articleTrending.author || 'Sem autor'
 
-    const trendingShowMore = document.createElement('a')
-    trendingShowMore.className = 'show-more'
-    trendingShowMore.textContent = 'Ver mais...'
+    const showMore = document.createElement('a')
+    showMore.className = 'show-more'
+    showMore.href = '../noticia.html'
+    showMore.onclick = () => {
+        saveNoticeInfo(articleTrending);
+    }
+    showMore.textContent = 'Ver mais...'
 
     trendingFooter.appendChild(trendingDate)
     trendingFooter.appendChild(trendingAuthor)
-    trendingFooter.appendChild(trendingShowMore)
+    trendingFooter.appendChild(showMore)
 
     divTrendingIcon.appendChild(iconHeartTrending)
     divTrendingIcon.appendChild(iconBookmarkTrending)
@@ -127,7 +146,7 @@ function createTredingNotice(articles) {
     section.appendChild(divTrendingText)
 }
 
-function createBreakingNewsNotice(articles){
+function createBreakingNewsNotice(articles) {
     localStorage.setItem(DB_KEY, JSON.stringify(articles));
 
     const divBreakingNews = document.querySelector('.red-box')
@@ -140,7 +159,7 @@ function createBreakingNewsNotice(articles){
 
     const breakingNewsText = document.createElement('h1')
     breakingNewsText.className = 'breaking-news-text'
-    breakingNewsText.textContent = 'Ultimas notícias'
+    breakingNewsText.textContent = 'Breaking News'
 
     const divRed = document.createElement('div')
     divRed.className = 'red-text'
@@ -208,6 +227,10 @@ function createCardsNotice(articles) {
 
         const showMore = document.createElement('a')
         showMore.className = 'show-more'
+        showMore.href = '../noticia.html'
+        showMore.onclick = () => {
+            saveNoticeInfo(article);
+        }
         showMore.textContent = 'Ver mais...'
 
         const footerCard = document.createElement('footer')
@@ -242,6 +265,10 @@ function createCardsNotice(articles) {
         ul.appendChild(li)
 
     });
+}
+
+function saveNoticeInfo(article) {
+    localStorage.setItem(DB_KEY, JSON.stringify(article));
 }
 
 createTredingNotice();
