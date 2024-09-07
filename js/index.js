@@ -3,9 +3,32 @@ const DB_KEY = '@news.g2'
 const baseUrl = `https://newsapi.org/v2/everything?apiKey=${API_KEY}&pageSize=6&language=pt`
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    createTopic(event, undefined);
     createTreding();
+    createBreakingNews();
+    createTopic(event, undefined);
 });
+
+function createTreding() {
+    const defaultTopicTrending = 'general'
+
+    axios.get(`${baseUrl}&q=${defaultTopicTrending}&sortBy=popularity`).then(response => {
+        console.log(response.data.articles)
+        const artigoTrending = response.data.articles
+        createTredingNotice(artigoTrending)
+    })
+        .catch(err => console.log(err))
+}
+
+function createBreakingNews() {
+    const defaultTopicBreakingNews = 'general'
+
+    axios.get(`${baseUrl}&q=${defaultTopicBreakingNews}&sortBy=publishedAt`).then(response => {
+        console.log(response.data.articles)
+        const artigoBreaking = response.data.articles
+        createBreakingNewsNotice(artigoBreaking)
+    })
+        .catch(err => console.log(err))
+}
 
 function createTopic(event, searchTopic) {
     event.preventDefault();
@@ -22,15 +45,115 @@ function createTopic(event, searchTopic) {
         .catch(err => console.log(err))
 }
 
-function createTreding() {
-    const defaultTopicTrending = 'general'
+function createTredingNotice(articles) {
+    localStorage.setItem(DB_KEY, JSON.stringify(articles));
 
-    axios.get(`${baseUrl}&q=${defaultTopicTrending}&sortBy=popularity`).then(response => {
-        console.log(response.data.articles)
-        const artigoTrending = response.data.articles
-        createTredingNotice(artigoTrending)
-    })
-        .catch(err => console.log(err))
+    const section = document.querySelector('.trending')
+    section.innerHTML = ''
+
+    const articleTrending = articles[1]
+
+    const img = document.createElement('img')
+    img.className = 'img-trending'
+    img.src = articleTrending.urlToImage
+    img.alt = 'capa do artigo trending'
+
+    const divTrendingText = document.createElement('div')
+    divTrendingText.className = 'trending-text'
+
+    const headerTrending = document.createElement('header')
+    headerTrending.className = 'fav'
+
+    const spanTrending = document.createElement('span')
+    spanTrending.className = 'fav-span'
+    spanTrending.textContent = 'tendência'
+
+    const divTrendingIcon = document.createElement('div')
+    divTrendingIcon.className = 'fav-item'
+
+    const iconHeartTrending = document.createElement('i')
+    iconHeartTrending.className = 'far fa-heart'
+
+    const iconBookmarkTrending = document.createElement('i')
+    iconBookmarkTrending.className = 'far fa-bookmark'
+
+    const trendingTitle = document.createElement('h1')
+    trendingTitle.className = 'treding-title'
+    trendingTitle.textContent = articleTrending.title
+
+    const trendingDescription = document.createElement('p')
+    trendingDescription.className = 'trending-description'
+    trendingDescription.textContent = articleTrending.description.substring(0, 150) + '...' || 'Sem descrição'
+
+    const trendingFooter = document.createElement('footer')
+    trendingFooter.className = 'trending-foot'
+
+    const trendingDate = document.createElement('span')
+    trendingDate.className = 'trending-date'
+
+    const dateTrending = new Date(articleTrending.publishedAt);
+    const formattedDateTrending = dateTrending.toLocaleDateString('pt-BR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
+    trendingDate.textContent = formattedDateTrending
+
+    const trendingAuthor = document.createElement('span')
+    trendingAuthor.className = 'trending-author'
+    trendingAuthor.textContent = articleTrending.author || 'Sem autor'
+
+    const trendingShowMore = document.createElement('a')
+    trendingShowMore.className = 'show-more'
+    trendingShowMore.textContent = 'Ver mais...'
+
+    trendingFooter.appendChild(trendingDate)
+    trendingFooter.appendChild(trendingAuthor)
+    trendingFooter.appendChild(trendingShowMore)
+
+    divTrendingIcon.appendChild(iconHeartTrending)
+    divTrendingIcon.appendChild(iconBookmarkTrending)
+
+    headerTrending.appendChild(spanTrending)
+    headerTrending.appendChild(divTrendingIcon)
+
+    divTrendingText.appendChild(headerTrending)
+    divTrendingText.appendChild(trendingTitle)
+    divTrendingText.appendChild(trendingDescription)
+    divTrendingText.appendChild(trendingFooter)
+
+    section.appendChild(img)
+    section.appendChild(divTrendingText)
+}
+
+function createBreakingNewsNotice(articles){
+    localStorage.setItem(DB_KEY, JSON.stringify(articles));
+
+    const divBreakingNews = document.querySelector('.red-box')
+    divBreakingNews.innerHTML = '';
+
+    const articleBreakingNews = articles[0]
+
+    const divWhite = document.createElement('div')
+    divWhite.className = 'white-box'
+
+    const breakingNewsText = document.createElement('h1')
+    breakingNewsText.className = 'breaking-news-text'
+    breakingNewsText.textContent = 'Ultimas notícias'
+
+    const divRed = document.createElement('div')
+    divRed.className = 'red-text'
+
+    const breakingNewsTitle = document.createElement('p')
+    breakingNewsTitle.className = 'breaking-news-title'
+    breakingNewsTitle.textContent = articleBreakingNews.title
+
+    divWhite.appendChild(breakingNewsText)
+    divRed.appendChild(breakingNewsTitle)
+
+    divBreakingNews.appendChild(divWhite)
+    divBreakingNews.appendChild(divRed)
 }
 
 function createCardsNotice(articles) {
@@ -121,88 +244,6 @@ function createCardsNotice(articles) {
     });
 }
 
-function createTredingNotice(articles) {
-    localStorage.setItem(DB_KEY, JSON.stringify(articles));
-
-    const section = document.querySelector('.trending')
-    section.innerHTML = ''
-
-    const articleTrending = articles[1]
-
-
-        const img = document.createElement('img')
-        img.className = 'img-trending'
-        img.src = articleTrending.urlToImage
-        img.alt = 'capa do artigo trending'
-
-        const divTrendingText = document.createElement('div')
-        divTrendingText.className = 'trending-text'
-
-        const headerTrending = document.createElement('header')
-        headerTrending.className = 'fav'
-
-        const spanTrending = document.createElement('span')
-        spanTrending.className = 'fav-span'
-        spanTrending.textContent = 'tendência'
-
-        const divTrendingIcon = document.createElement('div')
-        divTrendingIcon.className = 'fav-item'
-
-        const iconHeartTrending = document.createElement('i')
-        iconHeartTrending.className = 'far fa-heart'
-
-        const iconBookmarkTrending = document.createElement('i')
-        iconBookmarkTrending.className = 'far fa-bookmark'
-
-        const trendingTitle = document.createElement('h1')
-        trendingTitle.className = 'treding-title'
-        trendingTitle.textContent = articleTrending.title
-        
-        const trendingDescription = document.createElement('p')
-        trendingDescription.className = 'trending-description'
-        trendingDescription.textContent = articleTrending.description.substring(0,150) + '...' || 'Sem descrição'
-
-        const trendingFooter = document.createElement('footer')
-        trendingFooter.className = 'trending-foot'
-
-        const trendingDate = document.createElement('span')
-        trendingDate.className = 'trending-date'
-        
-        const dateTrending = new Date(articleTrending.publishedAt);
-        const formattedDateTrending = dateTrending.toLocaleDateString('pt-BR', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-
-        trendingDate.textContent = formattedDateTrending
-
-        const trendingAuthor = document.createElement('span')
-        trendingAuthor.className = 'trending-author'
-        trendingAuthor.textContent = articleTrending.author || 'Sem autor'
-
-        const trendingShowMore = document.createElement('a')
-        trendingShowMore.className = 'show-more'
-        trendingShowMore.textContent = 'Ver mais...'
-
-        trendingFooter.appendChild(trendingDate)
-        trendingFooter.appendChild(trendingAuthor)
-        trendingFooter.appendChild(trendingShowMore)
-
-        divTrendingIcon.appendChild(iconHeartTrending)
-        divTrendingIcon.appendChild(iconBookmarkTrending)
-
-        headerTrending.appendChild(spanTrending)
-        headerTrending.appendChild(divTrendingIcon)
-
-        divTrendingText.appendChild(headerTrending)
-        divTrendingText.appendChild(trendingTitle)
-        divTrendingText.appendChild(trendingDescription)
-        divTrendingText.appendChild(trendingFooter)
-
-        section.appendChild(img)
-        section.appendChild(divTrendingText)
-    }
-
 createTredingNotice();
+createBreakingNewsNotice();
 createCardsNotice();
