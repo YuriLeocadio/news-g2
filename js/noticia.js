@@ -1,29 +1,31 @@
 const main = document.querySelector('.main-notice')
-const API_KEY = 'daed6cb259cf49098d7cb037da993b31';
+const API_KEY = '40085e6fca1c42a1a10bc6ee22fc0751';
 const DB_KEY = '@news.g2'
+const DB_FAVORITES_KEY = '@news.favorites';
 const baseUrl = `https://newsapi.org/v2/everything?apiKey=${API_KEY}&pageSize=4&language=pt`
 
 let topics = [
+    'entertainment',
     'general',
     'sports',
     'politics',
     'technology',
     'health',
-    'science',
-    'entertainment'
+    'science'
 ];
 let index = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    let sortedTopic = shuffleArray(topics)
+    let sortedTopic = shuffleArray(topics)[index]
 
     axios.get(`${baseUrl}&q=${sortedTopic}&sortBy=relevancy`).then(response => {
         console.log(response.data.articles)
         const artigosRecomends = response.data.articles
         createRecomendsTopics(artigosRecomends)
     })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.error("Erro ao carregar artigos recomendados:", err)
+        })
 })
 
 if (window.location.pathname.includes('noticia.html')) {
@@ -32,7 +34,7 @@ if (window.location.pathname.includes('noticia.html')) {
     if (storage) {
         const notice = JSON.parse(storage);
 
-        document.querySelector('.notice-title').textContent = notice.title
+        document.querySelector('.notice-title').textContent = notice.title || 'Sem título'
         document.querySelector('.primeira-imagem').src = notice.urlToImage
 
         const dateTrending = new Date(notice.publishedAt);
@@ -45,11 +47,17 @@ if (window.location.pathname.includes('noticia.html')) {
 
         document.querySelector('.author').textContent = notice.author || 'Sem autor'
         document.querySelector('.notice-content').textContent = notice.description || 'Sem descrição'
+        document.querySelector('.site').textContent = 'Site original da notícia: '
+        document.querySelector('.url').href = notice.url
+        document.querySelector('.url').target = '_blank'
+        document.querySelector('.url').textContent = notice.url
         document.querySelector('.texto').textContent = notice.content
     }
 }
 
 function createRecomendsTopics(articles) {
+    const favorites = JSON.parse(localStorage.getItem(DB_FAVORITES_KEY)) || [];
+
     const divContainer = document.querySelector('.card-container')
     divContainer.innerHTML = ''
 
@@ -69,14 +77,25 @@ function createRecomendsTopics(articles) {
         const divIcons = document.createElement('div')
         divIcons.className = 'card-actions'
 
-        const iconHeart = document.createElement('i')
-        iconHeart.className = 'far fa-heart'
+        const iconBookmark = document.createElement('i');
+        iconBookmark.className = 'far fa-bookmark';
+        if (favorites.some(fav => fav.title === article.title)) {
+            iconBookmark.className = 'fas fa-bookmark';
+        }
+        iconBookmark.onclick = () => {
+            saveFavorite(article, iconBookmark);
+        };
 
-        const iconBookmark = document.createElement('i')
-        iconBookmark.className = 'far fa-bookmark'
+        const showMore = document.createElement('a')
+        showMore.className = 'show-more'
+        showMore.href = '../noticia.html'
+        showMore.onclick = () => {
+            saveNoticeInfo(article);
+        }
+        showMore.textContent = 'Ver mais...'
 
-        divIcons.appendChild(iconHeart)
         divIcons.appendChild(iconBookmark)
+        divIcons.appendChild(showMore)
 
         divCard.appendChild(img)
         divCard.appendChild(h4)
@@ -84,6 +103,10 @@ function createRecomendsTopics(articles) {
 
         divContainer.appendChild(divCard)
     });
+}
+
+function saveNoticeInfo(article) {
+    localStorage.setItem(DB_KEY, JSON.stringify(article));
 }
 
 function shuffleArray(preShuffleArray) {
@@ -96,6 +119,20 @@ function shuffleArray(preShuffleArray) {
         preShuffleArray[randomIndex] = aux;
         currentIndex -= 1;
     }
+    return preShuffleArray;
 }
 
-createRecomendsTopics();
+function saveFavorite(article, iconBookmark) {
+    let favorites = JSON.parse(localStorage.getItem(DB_FAVORITES_KEY)) || [];
+    const isFavorite = favorites.some(fav => fav.title === article.title);
+
+    if (isFavorite) {
+        favorites = favorites.filter(fav => fav.title !== article.title);
+        iconBookmark.className = 'far fa-bookmark'
+    } else {
+        favorites.push(article);
+        iconBookmark.className = 'fas fa-bookmark'
+    }
+
+    localStorage.setItem(DB_FAVORITES_KEY, JSON.stringify(favorites));
+}

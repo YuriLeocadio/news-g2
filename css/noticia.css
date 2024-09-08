@@ -9,50 +9,39 @@ body {
     padding: 18px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .header nav {
     width: 100%;
-}
-
-.li-header {
-    display: flex;
-    gap: 50px;
+    max-width: 1200px;
 }
 
 .logo {
-    width: 100px;
-
+    width: 200px;
+    margin-right: 200px;
 }
 
-.logo {
-    width: 150px;
-    margin-right: 40px;
-
-}
 
 #ul-header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
-
+    padding: 0 14px;
 }
 
 
 .a-header {
     color: rgb(82, 81, 81);
-    font-family: Poppins-Light;
-    padding: 10px;
-
-
+    font-size: 22px;
+    margin-left: 150px;
+    font-family: Poppins-Regular;
+    transition: 1s;
 }
 
 .a-header:hover {
     color: rgb(255, 15, 39);
-    transition: 0.3s all;
-
 }
 
 .footer {
@@ -108,7 +97,7 @@ body {
     font-family: Poppins-Medium;
 }
 
-.fa-wifi {
+#wifi {
     font-size: 25px;
     color: rgb(168, 170, 171);
 
@@ -204,25 +193,20 @@ main {
     font-family: Poppins-Light;
 }
 
-
-
-.interaction-icons {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
 .article-summary hr {
     border: none;
     border-top: 2px solid #9b0d0d;
     margin-bottom: 15px;
 }
 
-.article-summary p {
+.article-summary p, a{
     color: #cc0000;
     font-weight: bold;
     line-height: 1.4;
+}
 
+.article-summary a:hover{
+    color: #007bff;
 }
 
 .article-summary strong {
@@ -262,14 +246,6 @@ main {
     line-height: 1.4;
 }
 
-
-
-
-
-/* parte isaac */
-
-
-
 .image {
     width: 100%;
     height: 423px;
@@ -308,10 +284,7 @@ main {
 
 }
 
-
-
 /* noticia principal */
-
 .noticia-principal {
 
     margin-top: 20%;
@@ -458,7 +431,6 @@ main {
     border: 1px solid #ddd;
     border-radius: 9px;
     width: 100%;
-    height: 357px;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
@@ -475,7 +447,7 @@ main {
 
 .card-image {
     width: 100%;
-    height: 100%;
+    height: 250px;
     object-fit: cover;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -487,6 +459,7 @@ main {
     padding: 5px;
     color: #333;
     max-width: 100%;
+    height: 120px;
     margin-top: 7%;
     margin: 2%;
     font-family: Poppins-SemiBold;
@@ -497,10 +470,18 @@ main {
 .card-actions {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 16px;
     margin-top: 12px;
     gap: 20px;
 
+}
+
+.show-more {
+    font-size: 14px;
+    font-family: Poppins-SemiBold;
+    max-width: 133px;
+    color: rgb(0, 183, 255);
+    cursor: pointer;
 }
 
 .card-actions span {
@@ -510,4 +491,12 @@ main {
 
 .card-actions span:hover {
     color: red;
+}
+
+.fas {
+    color: rgb(255, 238, 0);
+}
+
+.far{
+    color: rgb(0, 0, 0);
 }

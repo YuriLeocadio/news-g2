@@ -116,20 +116,12 @@ body {
     gap: 20px;
 }
 
-.fa-heart {
-    color: rgb(0, 0, 0);
-    font-size: 16px;
-
-}
-
 .fas {
-    color: red;
-
+    color: rgb(255, 238, 0);
 }
 
-.fa-bookmark {
-    color: black;
-
+.far{
+    color: rgb(0, 0, 0);
 }
 
 .trending-foot {
@@ -300,7 +292,6 @@ body {
 
 .footer-card i {
     font-size: 20px;
-    color: #000000;
 }
 
 .logo {

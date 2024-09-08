@@ -20,11 +20,9 @@
                     <li>
                         <img class="logo" src="./assets/img/logo.png" alt="logo News G2" />
                     </li>
-                    <li class="li-header">
-                        <a class="a-header" href="#" onclick="createTopic(event, 'sports')">Esportes</a>
-                        <a class="a-header" href="#" onclick="createTopic(event, 'politics')">Política</a>
-                        <a class="a-header" href="#" onclick="createTopic(event, 'technology')">Tecnologia</a>
-                        <a class="a-header" href="#">Favoritos</a>
+                    <li>
+                        <a class="a-header" href="./index.html">Home</a>
+                        
                     </li>
 
                 </ul>
@@ -62,17 +60,14 @@
 
                 </div>
                 <div class="article-footer">
-                    <div class="interaction-icons">
-                        <i class="far fa-heart"></i>
-                        <i class="far fa-bookmark"></i>
-                    </div>
                     <div class="article-summary">
                         <hr>
-                        <p><strong>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae sint assumenda
+                        <p class="site"></p>
+                        <a class="url"><strong>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae sint assumenda
                                 temporibus
                                 obcaecati quae ipsum, ut velit, natus laudantium voluptatem dolorum architecto
                                 distinctio id
-                                error blanditiis et dolores officiis optio!</strong></p>
+                                error blanditiis et dolores officiis optio!</strong></a>
                     </div>
                 </div>
             </section>
@@ -112,10 +107,8 @@
                             <h4>Conferência discute o papel das mulheres na política</h4>
 
                             <div class="card-actions">
-                                <i class="far fa-heart"></i>
                                 <i class="far fa-bookmark"></i>
-
-
+                                <a href="#" class="show-more">Ver mais...</a>
                             </div>
                         </div>
 
@@ -163,7 +156,7 @@
                 </li>
 
                 <li class="li-icons">
-                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-wifi" id="wifi"></i>
                     <i class="fab fa-twitter"></i>
                     <i class="fab fa-reddit-alien"></i>
                     <i class="fab fa-facebook-square"></i>
@@ -182,6 +175,7 @@
             </ul>
         </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/noticia.js"></script>
 </body>
 
