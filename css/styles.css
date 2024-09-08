@@ -294,6 +294,10 @@ body {
     font-size: 20px;
 }
 
+.fa-bookmark:hover{
+    color: rgb(255, 238, 0);
+}
+
 .logo {
     width: 150px;
     margin-right: 40px;

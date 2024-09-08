@@ -493,6 +493,14 @@ main {
     color: red;
 }
 
+.fa-bookmark{
+    font-size: 18px;
+}
+
+.fa-bookmark:hover{
+    color: rgb(255, 238, 0);
+}
+
 .fas {
     color: rgb(255, 238, 0);
 }

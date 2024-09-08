@@ -32,6 +32,8 @@ if (window.location.pathname.includes('noticia.html')) {
     const storage = localStorage.getItem(DB_KEY);
 
     if (storage) {
+        let favorites = JSON.parse(localStorage.getItem(DB_FAVORITES_KEY)) || [];
+
         const notice = JSON.parse(storage);
 
         document.querySelector('.notice-title').textContent = notice.title || 'Sem título'
@@ -46,6 +48,17 @@ if (window.location.pathname.includes('noticia.html')) {
         document.querySelector('.date-notice').textContent = formattedDate
 
         document.querySelector('.author').textContent = notice.author || 'Sem autor'
+
+        const iconBookmark = document.querySelector('.fa-bookmark');
+        if (favorites.some(fav => fav.title === notice.title)) {
+            iconBookmark.className = 'fas fa-bookmark';
+        } else {
+            iconBookmark.className = 'far fa-bookmark';
+        }
+        iconBookmark.onclick = () => {
+            saveFavorite(notice, iconBookmark);
+        };
+
         document.querySelector('.notice-content').textContent = notice.description || 'Sem descrição'
         document.querySelector('.site').textContent = 'Site original da notícia: '
         document.querySelector('.url').href = notice.url
